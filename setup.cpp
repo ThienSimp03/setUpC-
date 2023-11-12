@@ -3,6 +3,7 @@
 #define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define sz(v) ((int)(v).size())
 #define all(v) (v).begin(), (v).end()
+#define MOD 1e8
 using namespace std;
 
 typedef int64_t int64;
@@ -12,8 +13,7 @@ typedef pair<int,int> ii;
 //  neu truong hop ma ra kq co kha nang float thi nen xet can-1 > can +1 cho safe
 // floor() làm tròn xuông, ceil() làm tròn lên
 // queue front, back, push, empty
-
-
+// uoc chung lon nhat __gcd()
 
 bool snt[1000001];
 void initSNT() {
@@ -31,10 +31,8 @@ void initSNT() {
 }
 
 //bigInt
-	
 const int base = 1000000000;
 const int base_digits = 9;
- 
 struct bigint {
     vector<int> a;
     int sign;
@@ -378,11 +376,29 @@ struct bigint {
         return res;
     }
 };
+/*
+how to use
+string A, B; cin >> A >> B;
+bigint a(A);
+bigint b(B);
+end bigInt
+*/ 
+
+//convert number to string
+//string stri = to_string(value);
+
+//convert string to number
+// stoi(value), stoll()
+// a << b tuong duong a*2^b
+
+//define int int64_t la int co 64 bit tuong duong long long 
+//define int int32_t la int co 32 bit
 
 int main() {
 	fast;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
+	cout<<__gcd(4,6);
     return 0;
 }
 
