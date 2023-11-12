@@ -1,6 +1,17 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#defind sz(v) ((int)(v).size())
+#defind all(v) (v).begin(), (v).end()
+
+typedef int64_t int64
+typedef pair<int, int> ii;
+
+
+//  neu truong hop ma ra kq co kha nang float thi nen xet can-1 > can +1 cho safe
+// floor() làm tròn xuông, ceil() làm tròn lên
+// queue front, back, push, empty
+
 using namespace std;
 bool snt[1000001];
 
@@ -16,17 +27,12 @@ void initSNT() {
                  snt[j] = false;
         }
     }
-}
-
-int gcd(int A, int B) {
-    if (B == 0) return A;
-    else return gcd(B, A % B);
-}
+} 
 
 int main() {
 	fast;
-	initSNT();
-	cout<<"hello world"<<endl;
+//	freopen("SETUP.inp", "r", stdin);
+//  freopen("SETUP.out", "w", stdout);
     return 0;
 }
 
