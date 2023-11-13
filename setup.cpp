@@ -9,10 +9,13 @@ using namespace std;
 typedef int64_t int64;
 typedef pair<int,int> ii;
 
+int dx[4] = {-1, 0, 0, 1};
+int dy[4] = {0, -1, 1, 0}; 
 
 //  neu truong hop ma ra kq co kha nang float thi nen xet can-1 > can +1 cho safe
 // floor() làm tròn xuông, ceil() làm tròn lên
-// queue front, back, push, empty
+// queue front, back, push, empty, pop
+// stack top, back, push, empty, pop
 // uoc chung lon nhat __gcd()
 
 bool snt[1000001];
@@ -394,11 +397,27 @@ end bigInt
 //define int int64_t la int co 64 bit tuong duong long long 
 //define int int32_t la int co 32 bit
 
+/*
+mang thua (sparse table)
+LG là so lon nhat thoa man 2^LG < N
+ví du: N = 10^5 thi LG = 16 vi 2^16 = 65536
+int a[N], st[LG + 1][N];
+void preprocess() {
+    for (int i = 1; i <= n; ++i) st[0][i] = a[i];
+    for (int j = 1; j <= LG; ++j)
+        for (int i = 1; i + (1 << j) - 1 <= n; ++i)
+            st[j][i] = min(st[j - 1][i], st[j - 1][i + (1 << (j - 1))]);
+}
+int queryMin(int l, int r) {
+    int k = __lg(r - l + 1);
+    return min(st[k][l], st[k][r - (1 << k) + 1]);
+}
+*/
+
 int main() {
 	fast;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-	cout<<__gcd(4,6);
     return 0;
 }
 
