@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define ull unsigned long long
 #define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define sz(v) ((int)(v).size())
 #define all(v) (v).begin(), (v).end()
@@ -413,11 +414,15 @@ int queryMin(int l, int r) {
     return min(st[k][l], st[k][r - (1 << k) + 1]);
 }
 */
+// next_permutation(s.begin(), s.end())
+
+
 
 int main() {
 	fast;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
+	cout<<(0<<10); 
     return 0;
 }
 
