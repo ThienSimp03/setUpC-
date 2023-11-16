@@ -386,7 +386,94 @@ string A, B; cin >> A >> B;
 bigint a(A);
 bigint b(B);
 end bigInt
-*/ 
+*/
+
+//kruskal
+/*
+struct edge{
+	int u, v;
+	int w;
+	edge(int canhdau, int canhcuoi, int trongso) : u(canhdau), v(canhcuoi), w(trongso){
+	}
+};
+
+const int maxn = 1001;
+
+int n, m;
+int parent[maxn], size[maxn];
+
+vector<edge> canh;
+
+void make_set() {
+	for(int i = 1; i <= n; i++) {
+		parent[i] = i;
+		size[i] = 1;
+	}
+}
+
+int find(int v) {
+	if(v == parent[v]) return v;
+	return parent[v] = find(parent[v]);
+}
+
+bool Union(int a, int b) {
+	int PA = find(a);
+	int PB = find(b);
+	if(PA != PB) {
+		if(size[PA] < size[PB]) swap(PA, PB);
+		parent[PB] = PA;
+		size[PA] += size[PB];
+		return true;
+	}
+	return false;
+}
+
+void input() {
+	cin >> n >> m;
+ 	for(int i = 0; i < m; i++) {
+ 		int x, y, w; cin >> x >> y >> w;
+ 		edge e = edge(x, y, w);
+ 		canh.push_back(e);
+	}
+}
+
+bool cmp(edge x, edge y) {
+	return x.w < y.w;
+}
+
+void kruskal() {
+//	tao cay khung cuc tieu rong
+	vector<edge> mst;
+	int d = 0;
+//	sort cac canh theo chieu dai tang dan
+	sort(canh.begin(), canh.end(), cmp);
+//	lap cho den khi het cac canh hoac mst co n-1 phan tu
+	for(int i = 0; i < m; i++) { // m la so canh
+		if(mst.size() == n-1) break;
+		edge e = canh[i];
+		if(Union(e.u, e.v)) {
+			mst.push_back(e);
+			d += e.w;
+		}
+		else continue;
+	}
+	if(mst.size() != n-1) {
+		cout<<"NO FIND WAY";
+		return ;
+	}
+	else {
+		cout<<"MST: "<<d<<endl;
+		for(edge it : mst) {
+			cout<<it.u<<" "<<it.v<<" "<<it.w<<endl;
+		}
+	}
+}
+
+import 3 line below to handle kruskal
+input();
+make_set();
+kruskal();
+*/
 
 //convert number to string
 //string stri = to_string(value);
@@ -422,7 +509,14 @@ int main() {
 	fast;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-	cout<<(0<<10); 
+	int n; cin >> n;
+	vector<ll> v(n);
+	map<ll, bool> mp;
+	mp[0] = true;
+	for(ll x: v) {
+		cin >> x;
+	}
+	
     return 0;
 }
 
