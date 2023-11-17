@@ -1,11 +1,28 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define F first
+#define S second
 #define ll long long
 #define ull unsigned long long
-#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define sz(v) ((int)(v).size())
-#define all(v) (v).begin(), (v).end()
-#define MOD 1e8
-using namespace std;
+#define ld long double
+#define pii pair<int,int>
+#define tiii tuple<int,int,int>
+#define vi vector<int>
+#define vii vector<pii>
+#define vc vector
+#define L cout<<'\n';
+#define E cerr<<'\n';
+#define all(x) x.begin(),x.end()
+#define rep(i,a,b) for (int i=a; i<b; ++i)
+#define rev(i,a,b) for (int i=a; i>b; --i)
+#define IOS ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define setpr(x) cout<<setprecision(x)<<fixed
+#define sz size()
+#define seea(a,x,y) for(int i=x;i<y;i++){cin>>a[i];}
+#define seev(v,n) for(int i=0;i<n;i++){int x; cin>>x; v.push_back(x);}
+#define sees(s,n) for(int i=0;i<n;i++){int x; cin>>x; s.insert(x);}
+
 
 typedef int64_t int64;
 typedef pair<int,int> ii;
@@ -506,7 +523,7 @@ int queryMin(int l, int r) {
 
 
 int main() {
-	fast;
+	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
 	int n; cin >> n;
