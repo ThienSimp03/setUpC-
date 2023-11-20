@@ -1,12 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define pb push_back
-#define F first
-#define S second
+#define fi first
+#define se second
 #define ll long long
 #define ull unsigned long long
 #define ld long double
 #define pii pair<int,int>
+#define pll pair<ll, ll>
 #define tiii tuple<int,int,int>
 #define vi vector<int>
 #define vii vector<pii>
@@ -35,6 +36,7 @@ int dy[4] = {0, -1, 1, 0};
 // queue front, back, push, empty, pop
 // stack top, back, push, empty, pop
 // uoc chung lon nhat __gcd()
+// set erase 
 
 bool snt[1000001];
 void initSNT() {
@@ -492,6 +494,46 @@ make_set();
 kruskal();
 */
 
+// dijkstra 
+/*
+const int maxn = 200001;
+
+int n, m, q;
+vector<pll> adj[maxn];
+
+void nhap() {
+	cin >> n >> m >> q;
+	for(int i = 0; i < m; i++) {
+		int x, y, w; cin >> x >> y >> w;
+		adj[x].push_back({y, w});
+		adj[y].push_back({x, w});
+	}
+}
+// tim tu dinh s den moi dinh
+void dijkstra(int s) {
+	vector<ll> d(n+1, 1e18);
+	vector<bool> visited(n+1, 0);
+	priority_queue <pll, vector<pll>, greater<pll>> Q;
+	d[s] = 0;
+	Q.push({0, s});
+	while(!Q.empty()) {
+		pll x = Q.top();
+		Q.pop();
+		if(visited[x.se]) continue;
+		for(pll tmp : adj[x.se]) {
+			if(d[tmp.fi] > d[x.se] + tmp.se) {
+				d[tmp.fi] = d[x.se] + tmp.se;
+				Q.push({d[tmp.fi], tmp.fi});
+			}
+		}
+	}
+	for(int i = 1; i <= n; i++) {
+		cout<<d[i]<<" ";
+	}
+}
+dijkstra(1);
+*/
+
 //convert number to string
 //string stri = to_string(value);
 
@@ -519,21 +561,13 @@ int queryMin(int l, int r) {
 }
 */
 // next_permutation(s.begin(), s.end())
-
-
-
+// priority_queue<int> pq; la tao mang se theo chieu giam dan
+// priority_queue <int, vector<int>, greater<int>> gq; la tao mang theo chieu tang dan
+// priority_queue <pair<int,int>, vector<int, int>, greater<int, int>> gq; la tao mang tang dan theo x.first
 int main() {
 	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-	int n; cin >> n;
-	vector<ll> v(n);
-	map<ll, bool> mp;
-	mp[0] = true;
-	for(ll x: v) {
-		cin >> x;
-	}
-	
     return 0;
 }
 
