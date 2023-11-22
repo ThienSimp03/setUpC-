@@ -17,7 +17,6 @@ using namespace std;
 #define vb vector<bool>
 #define vc vector
 #define L cout<<'\n';
-#define E cerr<<'\n';
 #define all(x) x.begin(),x.end()
 #define rep(i,a,b) for (int i=a; i<b; ++i)
 #define rev(i,a,b) for (int i=a; i>b; --i)
@@ -539,6 +538,47 @@ void dijkstra(int s) {
 dijkstra(1);
 */
 
+/*
+floydWarshall tim duong di giua moi cap dinh
+neu ton tai nhieu canh co cung x y hoac y x thi xet cost cua canh = min cua cost cu vs cost moi
+void init_trace(vector<vector<int>> &trace) {
+    int n = trace.size();
+    for (int u = 0; u < n; u++) {
+        for (int v = 0; v < n; v++) {
+            trace[u][v] = u;
+        }
+    }
+}
+
+void floydWarshall(int n, vector<vector<long long>> &w, vector<vector<long long>> &D, vector<vector<int>> &trace) {
+    D = w;
+    init_trace(trace); // n?u c?n d? ðý?ng ði
+    
+    for (int k = 0; k < n; k++) {
+        for (int u = 0; u < n; u++) {
+            for (int v = 0; v < n; v++) {
+                if (D[u][v] > D[u][k] + D[k][v]) {
+                    D[u][v] = D[u][k] + D[k][v];
+                    trace[u][v] = trace[k][v];
+                }
+            }
+        }
+    }
+}
+vector<int> trace_path(vector<vector<int>> &trace, int u, int v) {
+    vector<int> path;
+    while (v != u) { // truy v?t ngý?c t? v v? u
+        path.push_back(v);
+        v = trace[u][v];
+    }
+    path.push_back(u);
+    
+    reverse(path.begin(), path.end()); // c?n reverse v? ðý?ng ði t? v ngý?c v? u
+    
+    return path;
+}
+*/
+
 /* base segmentTree
 const int maxn = 100000;
 int n;
@@ -651,37 +691,11 @@ int queryMin(int l, int r) {
 // dung BFS tim duong di ngan nhat tu 1 dinh den dinh can tim
 // A65 Z90 a97 z122 0.48 9.57 ascii
 
-const int maxN = 1e5+1;
-const int MOD = 1e9+7;
-
-I n , m;
-
-vb visited(maxN, false);
-vi v[maxN+1];
-vi part(maxN+1);
-
-void dfs(int i, int cost) {
-	visited[i] = true;
-	for(int x : v[i]) {
-		if(!visited[x]) {
-			dfs(x);
-		}
-	}
-}
 
 int main() {
 	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-	cin >> n >> m;
-	rep(i, 0, m) {
-		int a, b; cin >> a >> b;
-		v[a].pb(b);
-		v[b].pb(a);
-	}
-	if(visited[n]) {
-		
-	} else cout<<"IMPOSSIBLE";
    	return 0;
 }
 
