@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define ar aray
 #define pb push_back
 #define fi first
 #define se second
+#define I int
 #define ll long long
 #define ull unsigned long long
 #define ld long double
@@ -10,6 +12,7 @@ using namespace std;
 #define pll pair<ll, ll>
 #define tiii tuple<int,int,int>
 #define vi vector<int>
+#define vll vector<ll>
 #define vii vector<pii>
 #define vc vector
 #define L cout<<'\n';
@@ -19,7 +22,7 @@ using namespace std;
 #define rev(i,a,b) for (int i=a; i>b; --i)
 #define IOS ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 #define setpr(x) cout<<setprecision(x)<<fixed
-#define sz size()
+#define sz(v) ((int)(v).size())
 #define seea(a,x,y) for(int i=x;i<y;i++){cin>>a[i];}
 #define seev(v,n) for(int i=0;i<n;i++){int x; cin>>x; v.push_back(x);}
 #define sees(s,n) for(int i=0;i<n;i++){int x; cin>>x; s.insert(x);}
@@ -37,6 +40,7 @@ int dy[4] = {0, -1, 1, 0};
 // stack top, back, push, empty, pop
 // uoc chung lon nhat __gcd()
 // set erase 
+// pair make_pair
 
 bool snt[1000001];
 void initSNT() {
@@ -334,7 +338,6 @@ struct bigint {
         return res;
     }
  
-    typedef vector<long long> vll;
  
     static vll karatsubaMultiply(const vll &a, const vll &b) {
         int n = a.size();
@@ -534,6 +537,83 @@ void dijkstra(int s) {
 dijkstra(1);
 */
 
+/* base segmentTree
+const int maxn = 100000;
+int n;
+int a[maxn];
+int t[4*maxn];
+
+void build(int v, int l, int r) {
+	if(l > r) return;
+	if(l == r) {
+		t[v] = a[l];
+		return;
+	}else {
+		int mid = (l+r) / 2;
+		build(v*2, l, mid);
+		build(v*2+1, mid+1, r);
+		// caculator sum
+		t[v] = t[v*2] + t[v*2+1];
+		// caculator min
+		t[v] = min(t[v*2], t[v*2+1]);
+	}
+}
+
+// query sum a[l, r]
+int sum(int v, int tl, int tr, int l, int r) {
+	if(l == tl && r == tr) {
+		return t[v];
+	}
+	if(l >= tl && r <= tr) return t[v];
+	else {
+		int mid = (tl+tr) / 2;
+		return sum(v*2, tl, mid, l, min(mid, r)) + sum(v*2+1, mid+1, tr, max(mid+1, l) , r);
+	}
+}
+
+// query min a[l, r]
+int MIN(int v, int tl, int tr, int l, int r) {
+	if(l > tr || r < tl) return INT_MAX;
+	if(l == r) {
+		return t[v];
+	}
+	//cmt duoi nen test
+//	if(l >= tl && r <= tr) return t[v];
+	else {
+		int mid = (l+r) / 2;
+		return min(MIN(2*v, l, mid, l, min(r, mid)), MIN(2*v+1, mid+1, r, max(l, mid+1), r));
+	}
+}
+// update l -> r
+
+void update2(int v, int tl, int tr, int l, int r, int val) {
+	if(l > tr || r < tl) return;
+	if(l == r) {
+		t[v] += val;
+		return;
+	}
+	int mid = (l+r) / 2;
+	update2(2*v, tl, mid, l, r, val);
+	update2(2*v+1, mid+1, tr, l, r, val);
+	t[v] = min(t[v*2], t[2*v+1]);
+}
+
+
+// update a[post] = val
+
+void update(int v, int l, int r, int pos, int val) {
+	if(l == r) {
+		t[v] = val;
+	}
+	else {
+		int mid = (l+r) /2;
+		if(pos <= mid) update(v*2, l, mid, pos, val);
+		else update(v*2+1, mid+1, r, pos, val);
+		t[v] = t[v*2] + t[v*2+1];
+	}
+}
+*/ 
+
 //convert number to string
 //string stri = to_string(value);
 
@@ -564,10 +644,35 @@ int queryMin(int l, int r) {
 // priority_queue<int> pq; la tao mang se theo chieu giam dan
 // priority_queue <int, vector<int>, greater<int>> gq; la tao mang theo chieu tang dan
 // priority_queue <pair<int,int>, vector<int, int>, greater<int, int>> gq; la tao mang tang dan theo x.first
+// multiset<lli, greater<int>> tickets; tao multiset giam dan
+// accumulate(all(v),0LL); tinh tong tu begin -> end dau vao init = 0
+// A65 Z90 a97 z122 0.48 9.57 ascii
+
+const int mxN = 100, mxX = 1e5;
+int n, x[mxN], dp[mxX+1];
+
 int main() {
+	
 	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-    return 0;
+	cin >> n;
+	vi v;
+	seev(v, n);
+	dp[0] = 1;
+	rep(j, 0, n) {
+		rev(i, 1e5, v[j] - 1) {
+			if(dp[i - v[j]] && i >= v[j]) {
+				dp[i] = 1;
+			}
+		}
+	}
+	vi ans;
+	rep(i, 1, 1e5+1) {
+		if(dp[i]) ans.pb(i);
+	}
+	cout<<sz(ans)<<endl;
+	for(int tmp : ans) cout<<tmp<<" ";
+   	return 0;
 }
 
