@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ar aray
+#define arr array
 #define pb push_back
 #define fi first
 #define se second
@@ -14,6 +14,7 @@ using namespace std;
 #define vi vector<int>
 #define vll vector<ll>
 #define vii vector<pii>
+#define vb vector<bool>
 #define vc vector
 #define L cout<<'\n';
 #define E cerr<<'\n';
@@ -26,6 +27,7 @@ using namespace std;
 #define seea(a,x,y) for(int i=x;i<y;i++){cin>>a[i];}
 #define seev(v,n) for(int i=0;i<n;i++){int x; cin>>x; v.push_back(x);}
 #define sees(s,n) for(int i=0;i<n;i++){int x; cin>>x; s.insert(x);}
+#define ms0(a) memset(a, 0, sizeof(a))
 
 
 typedef int64_t int64;
@@ -646,33 +648,40 @@ int queryMin(int l, int r) {
 // priority_queue <pair<int,int>, vector<int, int>, greater<int, int>> gq; la tao mang tang dan theo x.first
 // multiset<lli, greater<int>> tickets; tao multiset giam dan
 // accumulate(all(v),0LL); tinh tong tu begin -> end dau vao init = 0
+// dung BFS tim duong di ngan nhat tu 1 dinh den dinh can tim
 // A65 Z90 a97 z122 0.48 9.57 ascii
 
-const int mxN = 100, mxX = 1e5;
-int n, x[mxN], dp[mxX+1];
+const int maxN = 1e5+1;
+const int MOD = 1e9+7;
+
+I n , m;
+
+vb visited(maxN, false);
+vi v[maxN+1];
+vi part(maxN+1);
+
+void dfs(int i, int cost) {
+	visited[i] = true;
+	for(int x : v[i]) {
+		if(!visited[x]) {
+			dfs(x);
+		}
+	}
+}
 
 int main() {
-	
 	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-	cin >> n;
-	vi v;
-	seev(v, n);
-	dp[0] = 1;
-	rep(j, 0, n) {
-		rev(i, 1e5, v[j] - 1) {
-			if(dp[i - v[j]] && i >= v[j]) {
-				dp[i] = 1;
-			}
-		}
+	cin >> n >> m;
+	rep(i, 0, m) {
+		int a, b; cin >> a >> b;
+		v[a].pb(b);
+		v[b].pb(a);
 	}
-	vi ans;
-	rep(i, 1, 1e5+1) {
-		if(dp[i]) ans.pb(i);
-	}
-	cout<<sz(ans)<<endl;
-	for(int tmp : ans) cout<<tmp<<" ";
+	if(visited[n]) {
+		
+	} else cout<<"IMPOSSIBLE";
    	return 0;
 }
 
