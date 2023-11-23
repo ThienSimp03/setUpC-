@@ -715,6 +715,25 @@ int queryMin(int l, int r) {
     return min(st[k][l], st[k][r - (1 << k) + 1]);
 }
 */
+
+/*
+int countWords(string str)
+{
+    // Breaking input into word 
+    // using string stream
+   
+    // Used for breaking words
+    stringstream s(str); 
+   
+    // To store individual words
+    string word; 
+ 
+    int count = 0;
+    while (s >> word)
+        count++;
+    return count;
+}
+*/
 // next_permutation(s.begin(), s.end())
 // priority_queue<int> pq; la tao mang se theo chieu giam dan
 // priority_queue <int, vector<int>, greater<int>> gq; la tao mang theo chieu tang dan
@@ -726,12 +745,30 @@ int queryMin(int l, int r) {
 
 const int maxn = 1e5+1;
 
-int n, m, ;
+int n, m;
+vb visited(maxn, 0);
+vi adj[maxn];
+vi dp(maxn);
+
+void dfs(int u){
+	visited[u] = true;
+	
+}
 
 int main() {
 	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
+	cin >> n >> m;
+	rep(i, 0, m) {
+		I a,b; cin >> a >> b;
+		adj[a].pb(b);
+	}
+	dp[n] = 1; 
+	if(dp[1] != 0) {
+		
+	}
+	else cout<<"IMPOSSIBLE";
    	return 0;
 }
 
