@@ -498,6 +498,39 @@ make_set();
 kruskal();
 */
 
+/* prim toi uu chua setup het
+int parent[maxn], d[maxn];
+void primWithPriorityQueue(int u) {
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> Q;
+	vector<canh> MST;
+	int res = 0;
+	Q.push({0, u});
+	while(!Q.empty()) {
+		pair<int, int> top = Q.top(); Q.pop();
+		int x = top.second;
+		int w = top.first;
+		if(visited[x]) continue;
+		res += w;
+		visited[x] = true;
+		if(u != x) {
+			MST.push_back({x, parent[x], w});
+		}
+		for(auto it : adj[x]) {
+			if(!visited[it.first] && it.second < d[it.first]) {
+				Q.push({it.second, it.first});
+				d[it.first] = it.second;
+				parent[it.first] = x;
+			}
+		}
+	}
+	cout<<res<<endl;
+	for(canh e : MST) {
+		cout<<e.x<<" "<<e.y<<" " <<e.w << endl;
+	}
+}
+
+*/
+
 // dijkstra 
 /*
 const int maxn = 200001;
@@ -691,6 +724,9 @@ int queryMin(int l, int r) {
 // dung BFS tim duong di ngan nhat tu 1 dinh den dinh can tim
 // A65 Z90 a97 z122 0.48 9.57 ascii
 
+const int maxn = 1e5+1;
+
+int n, m, ;
 
 int main() {
 	IOS;
