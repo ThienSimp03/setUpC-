@@ -744,31 +744,12 @@ int countWords(string str)
 // A65 Z90 a97 z122 0.48 9.57 ascii
 
 const int maxn = 1e5+1;
-
-int n, m;
-vb visited(maxn, 0);
-vi adj[maxn];
-vi dp(maxn);
-
-void dfs(int u){
-	visited[u] = true;
-	
-}
+const int MOD = 1e9+7;
 
 int main() {
 	IOS;
 //	freopen("SETUP.inp", "r", stdin);
 //  freopen("SETUP.out", "w", stdout);
-	cin >> n >> m;
-	rep(i, 0, m) {
-		I a,b; cin >> a >> b;
-		adj[a].pb(b);
-	}
-	dp[n] = 1; 
-	if(dp[1] != 0) {
-		
-	}
-	else cout<<"IMPOSSIBLE";
    	return 0;
 }
 
