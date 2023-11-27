@@ -740,6 +740,11 @@ int countWords(string str)
 // priority_queue <pair<int,int>, vector<int, int>, greater<int, int>> gq; la tao mang tang dan theo x.first
 // multiset<lli, greater<int>> tickets; tao multiset giam dan
 // accumulate(all(v),0LL); tinh tong tu begin -> end dau vao init = 0
+/*
+f = 3.1
+n = 4
+cout << setprecision(n) << fixed << f;// lay so thap phan f=3.1000
+*/
 // dung BFS tim duong di ngan nhat tu 1 dinh den dinh can tim
 // A65 Z90 a97 z122 0.48 9.57 ascii
 
