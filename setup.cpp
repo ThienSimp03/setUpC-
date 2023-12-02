@@ -33,14 +33,14 @@ typedef int64_t int64;
 typedef pair<int,int> ii;
 
 int dx[4] = {-1, 0, 0, 1};
-int dy[4] = {0, -1, 1, 0}; 
+int dy[4] = {0, -1, 1, 0};
 
 //  neu truong hop ma ra kq co kha nang float thi nen xet can-1 > can +1 cho safe
 // floor() làm tròn xuông, ceil() làm tròn lên
 // queue front, back, push, empty, pop
 // stack top, back, push, empty, pop
 // uoc chung lon nhat __gcd()
-// set erase 
+// set erase
 // pair make_pair
 
 bool snt[1000001];
@@ -64,24 +64,24 @@ const int base_digits = 9;
 struct bigint {
     vector<int> a;
     int sign;
- 
+
     bigint() :
         sign(1) {
     }
- 
+
     bigint(long long v) {
         *this = v;
     }
- 
+
     bigint(const string &s) {
         read(s);
     }
- 
+
     void operator=(const bigint &v) {
         sign = v.sign;
         a = v.a;
     }
- 
+
     void operator=(long long v) {
         sign = 1;
         if (v < 0)
@@ -89,11 +89,11 @@ struct bigint {
         for (; v > 0; v = v / base)
             a.push_back(v % base);
     }
- 
+
     bigint operator+(const bigint &v) const {
         if (sign == v.sign) {
             bigint res = v;
- 
+
             for (int i = 0, carry = 0; i < (int) max(a.size(), v.a.size()) || carry; ++i) {
                 if (i == (int) res.a.size())
                     res.a.push_back(0);
@@ -106,7 +106,7 @@ struct bigint {
         }
         return *this - (-v);
     }
- 
+
     bigint operator-(const bigint &v) const {
         if (sign == v.sign) {
             if (abs() >= v.abs()) {
@@ -124,7 +124,7 @@ struct bigint {
         }
         return *this + (-v);
     }
- 
+
     void operator*=(int v) {
         if (v < 0)
             sign = -sign, v = -v;
@@ -138,20 +138,20 @@ struct bigint {
         }
         trim();
     }
- 
+
     bigint operator*(int v) const {
         bigint res = *this;
         res *= v;
         return res;
     }
- 
+
     friend pair<bigint, bigint> divmod(const bigint &a1, const bigint &b1) {
         int norm = base / (b1.a.back() + 1);
         bigint a = a1.abs() * norm;
         bigint b = b1.abs() * norm;
         bigint q, r;
         q.a.resize(a.a.size());
- 
+
         for (int i = a.a.size() - 1; i >= 0; i--) {
             r *= base;
             r += a.a[i];
@@ -163,22 +163,22 @@ struct bigint {
                 r += b, --d;
             q.a[i] = d;
         }
- 
+
         q.sign = a1.sign * b1.sign;
         r.sign = a1.sign;
         q.trim();
         r.trim();
         return make_pair(q, r / norm);
     }
- 
+
     bigint operator/(const bigint &v) const {
         return divmod(*this, v).first;
     }
- 
+
     bigint operator%(const bigint &v) const {
         return divmod(*this, v).second;
     }
- 
+
     void operator/=(int v) {
         if (v < 0)
             sign = -sign, v = -v;
@@ -189,13 +189,13 @@ struct bigint {
         }
         trim();
     }
- 
+
     bigint operator/(int v) const {
         bigint res = *this;
         res /= v;
         return res;
     }
- 
+
     int operator%(int v) const {
         if (v < 0)
             v = -v;
@@ -204,7 +204,7 @@ struct bigint {
             m = (a[i] + m * (long long) base) % v;
         return m * sign;
     }
- 
+
     void operator+=(const bigint &v) {
         *this = *this + v;
     }
@@ -217,7 +217,7 @@ struct bigint {
     void operator/=(const bigint &v) {
         *this = *this / v;
     }
- 
+
     bool operator<(const bigint &v) const {
         if (sign != v.sign)
             return sign < v.sign;
@@ -228,7 +228,7 @@ struct bigint {
                 return a[i] * sign < v.a[i] * sign;
         return false;
     }
- 
+
     bool operator>(const bigint &v) const {
         return v < *this;
     }
@@ -244,44 +244,44 @@ struct bigint {
     bool operator!=(const bigint &v) const {
         return *this < v || v < *this;
     }
- 
+
     void trim() {
         while (!a.empty() && !a.back())
             a.pop_back();
         if (a.empty())
             sign = 1;
     }
- 
+
     bool isZero() const {
         return a.empty() || (a.size() == 1 && !a[0]);
     }
- 
+
     bigint operator-() const {
         bigint res = *this;
         res.sign = -sign;
         return res;
     }
- 
+
     bigint abs() const {
         bigint res = *this;
         res.sign *= res.sign;
         return res;
     }
- 
+
     long long longValue() const {
         long long res = 0;
         for (int i = a.size() - 1; i >= 0; i--)
             res = res * base + a[i];
         return res * sign;
     }
- 
+
     friend bigint gcd(const bigint &a, const bigint &b) {
         return b.isZero() ? a : gcd(b, a % b);
     }
     friend bigint lcm(const bigint &a, const bigint &b) {
         return a / gcd(a, b) * b;
     }
- 
+
     void read(const string &s) {
         sign = 1;
         a.clear();
@@ -299,14 +299,14 @@ struct bigint {
         }
         trim();
     }
- 
+
     friend istream& operator>>(istream &stream, bigint &v) {
         string s;
         stream >> s;
         v.read(s);
         return stream;
     }
- 
+
     friend ostream& operator<<(ostream &stream, const bigint &v) {
         if (v.sign == -1)
             stream << '-';
@@ -315,7 +315,7 @@ struct bigint {
             stream << setw(base_digits) << setfill('0') << v.a[i];
         return stream;
     }
- 
+
     static vector<int> convert_base(const vector<int> &a, int old_digits, int new_digits) {
         vector<long long> p(max(old_digits, new_digits) + 1);
         p[0] = 1;
@@ -338,8 +338,8 @@ struct bigint {
             res.pop_back();
         return res;
     }
- 
- 
+
+
     static vll karatsubaMultiply(const vll &a, const vll &b) {
         int n = a.size();
         vll res(n + n);
@@ -349,27 +349,27 @@ struct bigint {
                     res[i + j] += a[i] * b[j];
             return res;
         }
- 
+
         int k = n >> 1;
         vll a1(a.begin(), a.begin() + k);
         vll a2(a.begin() + k, a.end());
         vll b1(b.begin(), b.begin() + k);
         vll b2(b.begin() + k, b.end());
- 
+
         vll a1b1 = karatsubaMultiply(a1, b1);
         vll a2b2 = karatsubaMultiply(a2, b2);
- 
+
         for (int i = 0; i < k; i++)
             a2[i] += a1[i];
         for (int i = 0; i < k; i++)
             b2[i] += b1[i];
- 
+
         vll r = karatsubaMultiply(a2, b2);
         for (int i = 0; i < (int) a1b1.size(); i++)
             r[i] -= a1b1[i];
         for (int i = 0; i < (int) a2b2.size(); i++)
             r[i] -= a2b2[i];
- 
+
         for (int i = 0; i < (int) r.size(); i++)
             res[i + k] += r[i];
         for (int i = 0; i < (int) a1b1.size(); i++)
@@ -378,7 +378,7 @@ struct bigint {
             res[i + n] += a2b2[i];
         return res;
     }
- 
+
     bigint operator*(const bigint &v) const {
         vector<int> a6 = convert_base(this->a, base_digits, 6);
         vector<int> b6 = convert_base(v.a, base_digits, 6);
@@ -531,7 +531,7 @@ void primWithPriorityQueue(int u) {
 
 */
 
-// dijkstra 
+// dijkstra
 /*
 const int maxn = 200001;
 
@@ -586,7 +586,7 @@ void init_trace(vector<vector<int>> &trace) {
 void floydWarshall(int n, vector<vector<long long>> &w, vector<vector<long long>> &D, vector<vector<int>> &trace) {
     D = w;
     init_trace(trace); // n?u c?n d? ðý?ng ði
-    
+
     for (int k = 0; k < n; k++) {
         for (int u = 0; u < n; u++) {
             for (int v = 0; v < n; v++) {
@@ -605,9 +605,9 @@ vector<int> trace_path(vector<vector<int>> &trace, int u, int v) {
         v = trace[u][v];
     }
     path.push_back(u);
-    
+
     reverse(path.begin(), path.end()); // c?n reverse v? ðý?ng ði t? v ngý?c v? u
-    
+
     return path;
 }
 */
@@ -687,7 +687,7 @@ void update(int v, int l, int r, int pos, int val) {
 		t[v] = t[v*2] + t[v*2+1];
 	}
 }
-*/ 
+*/
 
 //convert number to string
 //string stri = to_string(value);
@@ -696,7 +696,7 @@ void update(int v, int l, int r, int pos, int val) {
 // stoi(value), stoll()
 // a << b tuong duong a*2^b
 
-//define int int64_t la int co 64 bit tuong duong long long 
+//define int int64_t la int co 64 bit tuong duong long long
 //define int int32_t la int co 32 bit
 
 /*
@@ -719,15 +719,15 @@ int queryMin(int l, int r) {
 /*
 int countWords(string str)
 {
-    // Breaking input into word 
+    // Breaking input into word
     // using string stream
-   
+
     // Used for breaking words
-    stringstream s(str); 
-   
+    stringstream s(str);
+
     // To store individual words
-    string word; 
- 
+    string word;
+
     int count = 0;
     while (s >> word)
         count++;
@@ -747,6 +747,7 @@ cout << setprecision(n) << fixed << f;// lay so thap phan f=3.1000
 */
 // dung BFS tim duong di ngan nhat tu 1 dinh den dinh can tim
 // A65 Z90 a97 z122 0.48 9.57 ascii
+// s1.find(s2) != string::npos kiem tra xem chuoi s2 co phai la chuoi con s1 ko
 
 const int maxn = 1e5+1;
 const int MOD = 1e9+7;
