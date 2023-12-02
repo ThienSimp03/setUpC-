@@ -411,6 +411,30 @@ bigint b(B);
 end bigInt
 */
 
+/*
+string add(std::string a, std::string b) {
+  while ((int) a.size() < (int) b.size()) {
+    a = "0" + a;
+  }
+  while ((int) b.size() < (int) a.size()) {
+    b = "0" + b;
+  }
+  std::string ret;
+  ret.resize((int) a.size());
+  int rem = 0;
+  for (int i = (int) a.size() - 1; i >= 0; i--) {
+    int sum = a[i] - '0' + b[i] - '0' + rem;
+    int dig = sum % 10;
+    rem = sum / 10;
+    ret[i] = (char) (dig + '0');
+  }
+  if (rem == 1) {
+    ret = "1" + ret;
+  }
+  return ret;
+}
+*/
+
 //kruskal
 /*
 struct edge{
