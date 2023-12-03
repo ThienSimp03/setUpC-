@@ -741,6 +741,9 @@ int queryMin(int l, int r) {
 */
 
 /*
+string s;
+getline(cin, s); de lay cac cum tu
+
 int countWords(string str)
 {
     // Breaking input into word
