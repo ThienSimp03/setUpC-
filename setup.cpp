@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define arr array
+#define NO_BRAIN int main
 #define pb push_back
 #define fi first
 #define se second
@@ -58,7 +59,7 @@ using namespace std;
 #define ms0(a) memset(a, 0, sizeof(a))
 #define yes() cout << "YES\n"
 #define no() cout << "NO\n"
-#define debug(x)       \
+#define db(x)          \
     cerr << #x << " "; \
     _print(x);         \
     cerr << endl;
@@ -190,7 +191,7 @@ std::ostream &operator<<(std::ostream &os, const std::vector<std::vector<T>> &v)
     os << "\n";
     return os;
 }
-#define mo 1000000007
+#define MOD 1000000007
 
 int n, ans, q;
 
@@ -199,7 +200,7 @@ void solve(int tc)
     ans = 0;
 }
 
-int main()
+NO_BRAIN()
 {
     IOS;
     int TC;
@@ -207,6 +208,7 @@ int main()
     f1(tc, TC)
     {
         solve(tc);
+        db(tc);
     }
     return 0;
 }
