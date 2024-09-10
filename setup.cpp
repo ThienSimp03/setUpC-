@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define NO_BRAIN int main()
+#define local Thien_noobs
 #define arr array
-#define NO_BRAIN int main
 #define pb push_back
 #define fi first
 #define se second
@@ -59,10 +60,14 @@ using namespace std;
 #define ms0(a) memset(a, 0, sizeof(a))
 #define yes() cout << "YES\n"
 #define no() cout << "NO\n"
+#ifndef local
 #define db(x)          \
     cerr << #x << " "; \
     _print(x);         \
     cerr << endl;
+#else
+#define db(x)
+#endif
 
 void _print(ll t) { cerr << t; }
 void _print(int t) { cerr << t; }
@@ -200,7 +205,7 @@ void solve(int tc)
     ans = 0;
 }
 
-NO_BRAIN()
+NO_BRAIN
 {
     IOS;
     int TC;
@@ -208,7 +213,6 @@ NO_BRAIN()
     f1(tc, TC)
     {
         solve(tc);
-        db(tc);
     }
     return 0;
 }
