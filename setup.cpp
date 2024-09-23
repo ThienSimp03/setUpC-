@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define NO_BRAIN int main()
-#define local Thien_noobs
 #define arr array
 #define pb push_back
 #define fi first
@@ -60,7 +59,7 @@ using namespace std;
 #define ms0(a) memset(a, 0, sizeof(a))
 #define yes() cout << "YES\n"
 #define no() cout << "NO\n"
-#ifndef local
+#ifndef ONLINE_JUDGE
 #define db(x)          \
     cerr << #x << " "; \
     _print(x);         \
@@ -124,6 +123,14 @@ void _print(multiset<T> v)
         cerr << " ";
     }
     cerr << "]";
+}
+
+template <class T, class D>
+std::ostream &operator<<(std::ostream &os, vector<pair<T, D>> &v)
+{
+    for (auto x : v)
+        os << x.first << " " << x.second << "\n";
+    return os;
 }
 
 template <class T, class S>
@@ -208,7 +215,7 @@ void solve(int tc)
 NO_BRAIN
 {
     IOS;
-    int TC;
+    int TC = 1;
     cin >> TC;
     f1(tc, TC)
     {
