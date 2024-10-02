@@ -19,7 +19,7 @@ using namespace std;
 #define vb vector<bool>
 #define vc vector
 #define mpi map<int, int>
-#define mpl mp<ll, ll>
+#define mpl map<ll, ll>
 #define ump unordered_map<int, int>
 #define umpl unordered_map<ll, l>
 #define si set<int>
